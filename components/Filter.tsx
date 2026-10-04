@@ -2,24 +2,26 @@
 
 import { Checkbox } from "@headlessui/react";
 import { useState } from "react";
+import { Filter as FilterIcon } from "lucide-react";
 
-export default function Filter() {
-  const genres = [
-    "Fiction",
-    "Non-Fiction",
-    "Mystery",
-    "Sci-Fi",
-    "Fantasy",
-    "Romantasy",
-    "Romance",
-  ];
+type FilterProps = {
+  genres: string[];
+};
+
+export default function Filter({ genres }: FilterProps) {
   const [checked, setChecked] = useState<Record<string, boolean>>({});
+  const [open, setOpen] = useState(false);
   return (
-    <div className="flex flex-col items-start gap-4 w-full bg-background border-2 border-accent p-2 ">
-      <h1 className="text-text font-lg font-nunito font-semibold">
+    <div className="flex flex-col items-start gap-4 w-full bg-background border border-accent p-2 rounded-md">
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex items-center gap-2 text-text font-lg font-nunito font-semibold"
+      >
+        <FilterIcon className="size-5" />
         Filter by Genre
-      </h1>
-      <div className="flex flex-col items-start gap-2">
+      </button>
+      {open && (
+      <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full">
         {genres.map((genre) => (
           <label key={genre} className="flex items-center gap-2 cursor-pointer">
             <Checkbox
@@ -46,6 +48,7 @@ export default function Filter() {
           </label>
         ))}
       </div>
+      )}
     </div>
   );
 }

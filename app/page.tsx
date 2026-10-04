@@ -1,10 +1,16 @@
-//import Image from "next/image";
+
 import { BookOpen } from "lucide-react";
 import Link from "next/link";
 import Search from "@/components/Search";
 import Filter from "@/components/Filter";
+import AddBookSection from "@/components/AddBookSection";
+import LibraryCard from "@/components/LibraryCard";
+import { getGenres } from "@/lib/genres";
+import { getBooks } from "@/lib/books";
 
-export default function Home() {
+
+export default async function Home() {
+  const [genres, books] = await Promise.all([getGenres(), getBooks()]);
   return (
     <div>
       <main className="flex flex-col items-center py-16 px-16  dark:bg-black">
@@ -17,15 +23,22 @@ export default function Home() {
             Read, rank, and organize your books in one convenient place.
           </p>
           <Search />
-          <Filter />
-          <Link
-            href="/BookDetail"
-            className="rounded-md bg-button px-4 py-2 text-background hover:bg-background hover:text-button hover:border hover:border-button"
-          >
-            View Book Details
-          </Link>
+          <Filter genres={genres} />
+          <section className="flex flex-row gap-2 mx-auto">
+            <AddBookSection genres={genres} />
+          </section>
+          <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
+            {books.map((book) => (
+              <Link key={book.id} href={`/BookDetail/${book.id}`}>
+                <LibraryCard book={book} />
+              </Link>
+            ))}
+          </section>
         </div>
       </main>
     </div>
   );
 }
+
+
+

@@ -2,26 +2,52 @@
 
 :root {
   --background: #fff8ed;
+  --background-darker: #ede1cf;
+  --background-dark: #d5c3a8;
   --foreground: #171717;
   --card-background: #f2e6d5;
+  --card-background-darker: #d9c7ae;
+  --card-background-dark: #b49a79;
   --text-color: #3d302b;
+  --button-color-darker: #302520;
+  --button-color-dark: #241b17;
   --button-color: #783f58;
+  --button-darker: #603246;
+  --button-dark: #462333;
   --accent: #e8b6ae;
+  --accent-darker: #c88f86;
+  --accent-dark: #985e57;
   --badges: #ccd8be;
+  --badges-darker: #9eaf8d;
+  --badges-dark: #607451;
   --stars: #dfa63d;
+  --stars-darker: #b58025;
+  --stars-dark: #805a1b;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-darker: var(--background-darker);
+  --color-background-dark: var(--background-dark);
   --color-foreground: var(--foreground);
   --font-fraunces: var(--font-fraunces);
   --font-nunito: var(--font-nunito);
   --color-card-background: var(--card-background);
+  --color-card-background-darker: var(--card-background-darker);
+  --color-card-background-dark: var(--card-background-dark);
   --color-text: var(--text-color);
   --color-button: var(--button-color);
+  --color-button-darker: var(--button-darker);
+  --color-button-dark: var(--button-dark);
+  --color-accent-darker: var(--accent-darker);
+  --color-accent-dark: var(--accent-dark);
+  --color-badges-darker: var(--badges-darker);
+  --color-badges-dark: var(--badges-dark);
   --color-accent: var(--accent);
   --color-badges: var(--badges);
   --color-stars: var(--stars);
+  --color-stars-darker: var(--stars-darker);
+  --color-stars-dark: var(--stars-dark);  
 }
 
 @media (prefers-color-scheme: dark) {
